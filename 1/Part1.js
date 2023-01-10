@@ -1,30 +1,11 @@
-const fs = require('fs');
-const readline = require("readline");
-const fileName = "./input.txt";
+const u = require('../utils');
+const fileName = "input.txt";
+const fullFileName = `${__dirname}/${fileName}`;
 
-console.log("About to read input");
-let calories = [];
-let caloriesCounter = 0;
+const elfCalories = u.readFileSync(fullFileName).split("\r\n\r\n");
+const elfTotalCalories = elfCalories.map(c => c.split("\r\n").map(s => parseInt(s)).reduce((a,b) => {
+  return a + b;
+}))
 
-const rl = readline.createInterface({
-    input: fs.createReadStream(fileName)
-  });
-
-rl.on('line', line => {
-  handleLine(line);
-}).on('close', line => {
-  handleLine(line);
-  
-  console.log(`A total of ${calories.length} elves were found`);
-  console.log(`The max number of calories being carried is ${Math.max(...calories)}`);
-});
-
-function handleLine(line){
-  if(!line){
-    calories.push(caloriesCounter);
-    caloriesCounter = 0;
-  }
-  else{
-    caloriesCounter += parseInt(line);
-  }
-}
+console.log(`A total of ${elfCalories.length} elves were found`);
+console.log(`The max number of calories being carried is ${Math.max(...elfTotalCalories)}`);
