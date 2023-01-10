@@ -2,8 +2,7 @@ const fs = require('fs');
 
 function readFileSync(fileName){
     try {
-        const data = fs.readFileSync(fileName, 'utf8').toString();
-        return data;
+        return fs.readFileSync(fileName, 'utf8').toString();
       } catch (err) {
         console.error(err);
       }
