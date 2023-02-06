@@ -60,10 +60,10 @@ function getOponentSelection(s){
 }
 
 function getMySelectionBasedOnOponent(oponentSel, s){
-  //s === 'Y' ==> Need to dray
+  //s === 'Y' ==> Need to draw
   //s === 'X' ==> Need to lose
   //s === 'Z' ==> Need to win
-  
+
   if(s === 'Y'){
     return oponentSel;
   }
