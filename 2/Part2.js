@@ -60,15 +60,20 @@ function getOponentSelection(s){
 }
 
 function getMySelectionBasedOnOponent(oponentSel, s){
+  //s === 'Y' ==> Need to dray
+  //s === 'X' ==> Need to lose
+  //s === 'Z' ==> Need to win
+  
   if(s === 'Y'){
-    //Need to draw
     return oponentSel;
   }
+
   if(oponentSel === selection.Rock){
     return s === 'X' 
       ? selection.Scissors 
       : selection.Paper; 
   }
+
   if(oponentSel === selection.Paper){
     return s === 'X' 
       ? selection.Rock 
